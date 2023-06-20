@@ -5,7 +5,8 @@ IoT-IoBox is an economical automation device whose hardware accepts 12 digital i
 The counter total information is produced by counting the changes that occur with the 0-1 change of the signal belonging to the 12 inputs. Likewise, the cycle time of the 0-1 change of each input is also calculated in milliseconds into the card.
 The last status of 4 output signals, together with these 12 input, counter and cycle values, can be read instantly with this Node-red node, and the last status of each selected signal value can be taken as a node output.
 
-![Iot-IoBox image](https://github.com/asafyurdakul/node-red-trexmes-iot-iobox/blob/main/docs/assets/iocard.png)
+
+![Iot-IoBox image](https://raw.githubusercontent.com/asafyurdakul/node-red-trexmes-iot-iobox/main/docs/assets/iocard.png)
 
 # Install
 
