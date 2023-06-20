@@ -1,0 +1,21 @@
+{
+  "name": "node-red-trexmes-iot-iobox",
+  "version": "1.0.1",
+  "description": "Trex Iot-IoBox serial connector",
+  "main": "iobox.js",
+  "keywords": [
+    "node-red",
+    "serialport",
+    "TrexMes"
+  ],
+  "node-red": {
+    "nodes": {
+      "iobox": "iobox.js"
+    }
+  },
+  "author": "asafyurdakul@trex.com.tr",
+  "license": "MIT",
+  "dependencies": {
+    "serialport": "^11.0.0"
+  }
+}

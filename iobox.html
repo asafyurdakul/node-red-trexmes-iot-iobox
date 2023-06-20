@@ -1,0 +1,466 @@
+<script type="text/html" data-template-name="iobox">
+    <div class="form-row node-input-serial">
+        <label for="node-input-serial"><i class="fa fa-random"></i> <span data-i18n="serial.label.serialport"></span></label>
+        <input type="text" id="node-input-serial">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+	
+	<div class="form-row">
+		<input type="checkbox" id="node-input-onlychanged" style="display:inline-block; width:15px; vertical-align:baseline;">
+		<span data-i18n="serial.label.onlychanged"></span>
+	</div>
+	
+	<div class="form-row" style="margin-top:12px; margin-bottom:0 ">
+        <label style="width: 100% !important;"><i class="fa fa-sign-in"></i> <span data-i18n="serial.label.outputs"></span></label>
+    </div>
+	<div class="form-row">
+		<table width="100%">
+			<tr style="line-height:10px;">            
+				<td width="120px" data-i18n="serial.label.inputs"></td>
+				<td width="120px" data-i18n="serial.label.counters"></td>
+				<td width="120px" data-i18n="serial.label.cycles"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput1" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input1"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput1" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter1"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput1" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle1"></span>
+				</td>	
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput2" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input2"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput2" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter2"></span>
+				</td>	
+				<td>
+					<input type="checkbox" id="node-input-cyoutput2" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle2"></span>
+				</td>	
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput3" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input3"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput3" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter3"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput3" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle3"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput4" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input4"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput4" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter4"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput4" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle4"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput5" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input5"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput5" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter5"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput5" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle5"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput6" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input6"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput6" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter6"></span>
+				</td>	
+				<td>
+					<input type="checkbox" id="node-input-cyoutput6" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle6"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput7" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input7"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput7" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter7"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput7" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle7"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput8" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input8"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput8" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter8"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput8" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle8"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput9" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input9"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput9" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter9"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node--input-cyoutput9" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle9"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput10" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input10"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput10" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter10"></span>
+				</td>	
+				<td>
+					<input type="checkbox" id="node-input-cyoutput10" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle10"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput11" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input11"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput11" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter11"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput11" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle11"></span>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-ioutput12" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.input12"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-coutput12" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.counter12"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cyoutput12" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.cycle12"></span>
+				</td>				
+			</tr>		
+		</table>
+	</div>
+	
+	<div class="form-row" style="margin-top:12px; margin-bottom:0 ">
+        <label style="width: 100% !important;"><i class="fa fa-sign-in"></i> <span data-i18n="serial.label.cardoutputs"></span></label>
+    </div>
+	<div class="form-row">
+		<table width="100%">
+			<tr>
+				<td>
+					<input type="checkbox" id="node-input-cardoutput1" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.output1"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cardoutput2" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.output2"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cardoutput3" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.output3"></span>
+				</td>
+				<td>
+					<input type="checkbox" id="node-input-cardoutput4" style="display:inline-block; width:15px; vertical-align:baseline;">
+					<span data-i18n="serial.label.output4"></span>
+				</td>	
+			</tr>
+		</table>
+	</div>
+	
+	<input type="hidden" id="node-input-outputs"/>
+	<input type="hidden" id="node-input-ports"/>
+	<input type="hidden" id="node-input-onlychanged"/>
+	
+</script>
+
+<script type="text/html" data-help-name="iobox">
+    <p>Trex Mes IoT-IoBox connector </p>
+	<a href="https://www.mertyazilim.com.tr" target="_blank">www.mertyazilim.com.tr</a>
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('iobox',{
+        category: 'trexmes',
+        defaults: {
+            name: {name:""},
+            serial: {type:"iobox-port",required:true},
+			
+			ioutput1 : {value : true},
+			ioutput2 : {value : true},
+			ioutput3 : {value : false},
+			ioutput4 : {value : false},
+			ioutput5 : {value : false},
+			ioutput6 : {value : false},
+			ioutput7 : {value : false},
+			ioutput8 : {value : false},			
+			ioutput9 : {value : false},
+			ioutput10 : {value : false},
+			ioutput11 : {value : false},
+			ioutput12 : {value : false},
+			
+			coutput1 : {value : true},
+			coutput2 : {value : false},
+			coutput3 : {value : false},
+			coutput4 : {value : false},
+			coutput5 : {value : false},
+			coutput6 : {value : false},
+			coutput7 : {value : false},
+			coutput8 : {value : false},
+			coutput9 : {value : false},
+			coutput10 : {value : false},
+			coutput11 : {value : false},
+			coutput12 : {value : false},
+			
+			cyoutput1 : {value : false},
+			cyoutput2 : {value : false},
+			cyoutput3 : {value : false},
+			cyoutput4 : {value : false},
+			cyoutput5 : {value : false},
+			cyoutput6 : {value : false},
+			cyoutput7 : {value : false},
+			cyoutput8 : {value : false},
+			cyoutput9 : {value : false},
+			cyoutput10 : {value : false},
+			cyoutput11 : {value : false},
+			cyoutput12 : {value : false},
+			
+			cardoutput1 : {value : false},
+			cardoutput2 : {value : false},
+			cardoutput3 : {value : false},
+			cardoutput4 : {value : false},
+			
+			onlychanged : {value : true},
+			
+			outputs: {value:3},
+			ports: {value:["INF1","INF2","CNT1"]}
+        },
+        color:"#3FADB5",
+        inputs:1,
+        outputs:3,
+        icon: "trex.png",
+        label: function() {
+            var serialNode = RED.nodes.node(this.serial);
+            return this.name||(serialNode?"iobox :" + serialNode.label().split(":")[0]:"iobox");
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        outputLabels: function(index) {						
+			return "Port : "+ index;
+		},
+		oneditsave: function() {
+			const oPorts = [];
+			for(var i =1;i<=12;i++){
+				if($("#node-input-ioutput"+i).is(":checked")){
+					oPorts.push("INF"+i);
+				}
+			}
+			for(var i =1;i<=12;i++){
+				if($("#node-input-coutput"+i).is(":checked")){
+					oPorts.push("CNT"+i);
+				}
+			}
+			for(var i =1;i<=12;i++){
+				if($("#node-input-cyoutput"+i).is(":checked")){
+					oPorts.push("CYC"+i);
+				}
+			}
+			for(var i =1;i<=4;i++){
+				if($("#node-input-cardoutput"+i).is(":checked")){
+					oPorts.push("OUT"+i);
+				}
+			}
+		
+			$("#node-input-outputs").val(oPorts.length);
+			$("#node-input-ports").val(oPorts);	
+			
+        }		
+    });	
+	
+</script>
+
+
+<script type="text/html" data-template-name="iobox-port">
+    <div class="form-row">
+        <label for="node-config-input-serialport"><i class="fa fa-random"></i> <span data-i18n="serial.label.serialport"></span></label>
+        <input type="text" id="node-config-input-serialport" style="width:66%;" data-i18n="[placeholder]serial.placeholder.serialport">
+        <a id="node-config-lookup-serial" class="red-ui-button"><i id="node-config-lookup-serial-icon" class="fa fa-search"></i></a>
+    </div>
+    <div class="form-row" style="margin-bottom:8px;">
+        <table width="100%">
+        <tr style="line-height:10px;">
+            <td width="90px" style="font-size:14px;"><i class="fa fa-wrench"></i> <span data-i18n="serial.label.settings"></span></td>
+            <td width="110px" data-i18n="serial.label.baudrate"></td>
+            <td width="70px" data-i18n="serial.label.databits"></td>
+            <td width="80px" data-i18n="serial.label.parity"></td>
+            <td width="70px" data-i18n="serial.label.stopbits"></td>
+        </tr>
+        <tr>
+        <td>&nbsp;</td>
+        <td>
+            <input type="text" id="node-config-input-serialbaud" style="width:92%; height:30px;">
+        </td>
+        <td><select type="text" id="node-config-input-databits" style="width:90%; height:30px;">
+            <option value="8">8</option>
+            <option value="7">7</option>
+            <option value="6">6</option>
+            <option value="5">5</option>
+        </select></td>
+        <td><select type="text" id="node-config-input-parity" style="width:90%; height:30px;">
+            <option value="none" data-i18n="serial.parity.none"></option>
+            <option value="even" data-i18n="serial.parity.even"></option>
+            <option value="mark" data-i18n="serial.parity.mark"></option>
+            <option value="odd" data-i18n="serial.parity.odd"></option>
+            <option value="space" data-i18n="serial.parity.space"></option>
+        </select></td>
+        <td><select type="text" id="node-config-input-stopbits" style="width:60px; height:30px;">
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select></td>
+        </tr>
+		</table>
+    </div>
+
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('iobox-port',{
+        category: 'config',
+        defaults: {
+            //name: {value:""},
+            serialport: {value:"",required:true},
+            serialbaud: {value:"19200",required:true,validate:RED.validators.number()},
+            databits: {value:8,required:true},
+            parity: {value:"none",required:true},
+            stopbits: {value:1,required:true},
+            waitfor: {value:""},
+            dtr: {value:"none"},
+            rts: {value:"none"},
+            cts: {value:"none"},
+            dsr: {value:"none"},
+            newline: {value:"\\n"},
+            bin: {value:"false"},
+            out: {value:"char"},
+            addchar: {value:""},
+            responsetimeout: {value: 10000}
+        },
+        label: function() {
+            this.serialbaud = this.serialbaud || 19200;
+            this.databits = this.databits || 8;
+            this.parity = this.parity || this._("serial.label.none");
+            this.stopbits = this.stopbits || 1;
+            return this.serialport+":"+this.serialbaud+"-"+this.databits+this.parity.charAt(0).toUpperCase()+this.stopbits;
+        },
+        oneditprepare: function() {
+            var previous = null;
+            var blist = [
+                {value:"230400",label:"230400",hasValue:false},
+                {value:"115200",label:"115200",hasValue:false},
+                {value:"57600",label:"57600",hasValue:false},
+                {value:"38400",label:"38400",hasValue:false},
+                {value:"19200",label:"19200",hasValue:false},
+                {value:"9600",label:"9600",hasValue:false},
+                {value:"4800",label:"4800",hasValue:false},
+                {value:"2400",label:"2400",hasValue:false},
+                {value:"1200",label:"1200",hasValue:false},
+                {value:"600",label:"600",hasValue:false},
+                {value:"300",label:"300",hasValue:false},
+                {label:"other",value:"other",icon:"red/images/typedInput/09.png",validate:/^[0-9]*$/}
+            ];
+
+            var serialbaudType = "custom";
+            for (var i in blist) {
+                if (this.serialbaud == blist[i].value) {
+                    serialbaudType = this.serialbaud;
+                }
+            }
+
+            $("#node-config-input-serialbaud").typedInput({
+                default: this.serialbaud,
+                types:blist
+            });
+
+           
+            try {
+                $("#node-config-input-serialport").autocomplete( "destroy" );
+            } catch(err) {
+            }
+            $("#node-config-lookup-serial").click(function() {
+                $("#node-config-lookup-serial").addClass('disabled');
+                $.getJSON('serialports',function(data) {
+                    $("#node-config-lookup-serial").removeClass('disabled');
+                    var ports = data || [];
+                    $("#node-config-input-serialport").autocomplete({
+                        source:ports,
+                        minLength:0,
+                        close: function( event, ui ) {
+                            $("#node-config-input-serialport").autocomplete( "destroy" );
+                        }
+                    }).autocomplete("search","");
+                });
+            });
+        },
+        oneditsave: function() {
+            var mytype = $("#node-config-input-serialbaud").typedInput('type');
+            if (mytype !== "other") {
+                $("#node-config-input-serialbaud").typedInput('value',mytype);
+            }
+            this.serialbaud = $("#node-config-input-serialbaud").typedInput('value');
+        }
+    });
+	
+
+</script>

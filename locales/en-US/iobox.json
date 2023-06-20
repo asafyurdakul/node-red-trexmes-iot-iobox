@@ -1,0 +1,119 @@
+{
+    "serial": {
+        "status": {
+            "waiting": "waiting",
+            "timeout": "timeout"
+        },
+        "label": {
+            "serialport": "Serial Port",
+            "settings": "Settings",
+            "baudrate": "Baud Rate",
+            "databits": "Data Bits",
+            "parity": "Parity",
+            "stopbits": "Stop Bits",
+            "input": "Input",
+            "split": "Split input",
+            "deliver": "and deliver",
+            "outputs": "IoBox input, counter and cycle states as output",
+			"cardoutputs": "IoBox output states as output",
+            "request": "Request",
+            "responsetimeout": "Default response timeout",
+            "ms": "ms",
+            "serial": "serial",
+            "none": "none",
+            "start": "Optionally wait for a start character of",
+            "startor": ", then",
+			"outputsettings":"Output options",
+			"inputs":"Input values",
+			"counters":"Counter values",
+			"cycles":"Cycle values",
+			"input1":"IN1",
+			"input2":"IN2",
+			"input3":"IN3",
+			"input4":"IN4",
+			"input5":"IN5",
+			"input6":"IN6",
+			"input7":"IN7",
+			"input8":"IN8",
+			"input9":"IN9",
+			"input10":"IN10",
+			"input11":"IN11",
+			"input12":"IN12",
+			"counter1":"CNT1",
+			"counter2":"CNT2",
+			"counter3":"CNT3",
+			"counter4":"CNT4",
+			"counter5":"CNT5",
+			"counter6":"CNT6",
+			"counter7":"CNT7",
+			"counter8":"CNT8",
+			"counter9":"CNT9",
+			"counter10":"CNT10",
+			"counter11":"CNT11",
+			"counter12":"CNT12",
+			"cycle1":"CYC1",
+			"cycle2":"CYC2",
+			"cycle3":"CYC3",
+			"cycle4":"CYC4",
+			"cycle5":"CYC5",
+			"cycle6":"CYC6",
+			"cycle7":"CYC7",
+			"cycle8":"CYC8",
+			"cycle9":"CYC9",
+			"cycle10":"CYC10",
+			"cycle11":"CYC11",
+			"cycle12":"CYC12",
+			"output1":"OUT1",
+			"output2":"OUT2",
+			"output3":"OUT3",
+			"output4":"OUT4",
+			"onlychanged":"Transfer only changed values"
+        },
+        "placeholder": {
+            "serialport": "for example: /dev/ttyUSB0/ or COM1"
+        },
+        "parity": {
+            "none": "None",
+            "even": "Even",
+            "mark": "Mark",
+            "odd": "Odd",
+            "space": "Space"
+        },
+        "linestates": {
+            "none": "auto",
+            "high": "High",
+            "low": "Low"
+        },
+        "split": {
+            "character": "on the character",
+            "timeout": "after a timeout of",
+            "silent": "after a silence of",
+            "lengths": "into fixed lengths of"
+        },
+        "output": {
+            "ascii": "ASCII strings",
+            "binary": "binary buffers"
+        },
+        "addsplit": "Add character to output messages",
+        "tip": {
+            "responsetimeout": "Tip: The default response timeout can be overridden by setting msg.timeout.",
+            "split": "Tip: the \"Split on\" character is used to split the input into separate messages. Can accept chars ($), escape codes (\\n), or hex codes (0x03).",
+            "silent": "Tip: In line-silent mode timeout is restarted upon arrival of any character (i.e. inter-byte timeout).",
+            "timeout": "Tip: In timeout mode timeout starts from arrival of first character.",
+            "count": "Tip: In count mode msg.count can override the configured count as long as it smaller than the configured value.",
+            "waitfor": "Tip: Optional. Leave blank to receive all data. Can accept chars ($), escape codes (\\n), or hex codes (0x02)." ,
+            "addchar": "Tip: This character is added to every message sent out to the serial port. Usually \\r or \\n."
+        },
+        "onopen": "serial port __port__ opened at __baud__ baud __config__",
+        "errors": {
+            "missing-conf": "missing serial config",
+            "serial-port": "serial port",
+            "error": "serial port __port__ error: __error__",
+            "unexpected-close": "serial port __port__ closed unexpectedly",
+            "disconnected": "serial port __port__ disconnected",
+            "closed": "serial port __port__ closed",
+            "list": "Failed to list ports. Please enter manually.",
+            "badbaudrate": "Baudrate is invalid"
+        }
+    }
+}
