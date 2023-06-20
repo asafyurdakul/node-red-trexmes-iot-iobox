@@ -29,7 +29,7 @@ module.exports = function(RED) {
     RED.nodes.registerType("iobox-port",SerialPortNode);
 		
 	
-	function parseValues(msgout, parsePorts, onlychanged) {
+	function parseValues(msgout, parsePorts, onlychanged, singleoutput ) {
 		if(!Array.isArray(parsePorts)) {
 			parsePorts = parsePorts.split(',');
 		}
@@ -51,13 +51,24 @@ module.exports = function(RED) {
 				if (element.startsWith('INF')) {
 					if (strArrayEqual[0] == 'INF') {
 						var m = element.replace('INF', '');	
-						//console.log(oldValues[indexResult]);
-						if ( oldValues[indexResult] == undefined || 
-						    ( (oldValues[indexResult].payload !== strArrayEqual[1][12 - Number(m)]) ||
-							  !onlychanged ) )
-						{
-							resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
-							oldValues[indexResult] = resultParse[indexResult];
+						
+						if(!singleoutput) {						
+							if ( oldValues[indexResult] == undefined || 
+								( (oldValues[indexResult].payload !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
+								  !onlychanged ) )
+							{						
+								resultParse[indexResult] = { payload : parseInt(strArrayEqual[1][12 - Number(m)]), port : element };
+								oldValues[indexResult] = resultParse[indexResult];
+							}
+						}
+						else {	
+							if ( oldValues[indexResult] == undefined || 
+								( (oldValues[indexResult][element] !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
+								  !onlychanged ) )
+							{
+								resultParse[indexResult] = { [element]: parseInt(strArrayEqual[1][12 - Number(m)]) };							
+								oldValues[indexResult] = resultParse[indexResult];
+							}
 						}
 						indexResult++;
 								
@@ -67,13 +78,24 @@ module.exports = function(RED) {
 				if (element.startsWith('OUT')) {
 					if (strArrayEqual[0] == 'OUT') {
 						var m = element.replace('OUT', '');	
-						//console.log(oldValues[indexResult]);
-						if ( oldValues[indexResult] == undefined || 
-						    ( (oldValues[indexResult].payload !== strArrayEqual[1][12 - Number(m)]) ||
-							  !onlychanged ) )
-						{
-							resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
-							oldValues[indexResult] = resultParse[indexResult];
+						
+						if(!singleoutput) {
+							if ( oldValues[indexResult] == undefined || 
+								( (oldValues[indexResult].payload !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
+								  !onlychanged ) )
+							{
+								resultParse[indexResult] = { payload : parseInt(strArrayEqual[1][12 - Number(m)]), port : element };
+								oldValues[indexResult] = resultParse[indexResult];
+							}
+						}
+						else {
+							if ( oldValues[indexResult] == undefined || 
+								( (oldValues[indexResult][element] !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
+								  !onlychanged ) )
+							{
+								resultParse[indexResult] = { [element]: parseInt(strArrayEqual[1][12 - Number(m)]) };							
+								oldValues[indexResult] = resultParse[indexResult];
+							}
 						}
 						indexResult++;
 								
@@ -82,20 +104,38 @@ module.exports = function(RED) {
 				}
 				else if (strArrayEqual[0] == element) {
 					
-					if ( oldValues[indexResult] == undefined || 
-					    ( (oldValues[indexResult].payload !==  strArrayEqual[1]) ||
-						  !onlychanged) )
-					{	
-						resultParse[indexResult] = { payload : strArrayEqual[1] , port : element };
-						oldValues[indexResult] = resultParse[indexResult];
+					if(!singleoutput) {
+						if ( oldValues[indexResult] == undefined || 
+							( (oldValues[indexResult].payload !==  parseInt(strArrayEqual[1])) ||
+							  !onlychanged) )
+						{	
+							resultParse[indexResult] = { payload : parseInt(strArrayEqual[1]) , port : element };
+							oldValues[indexResult] = resultParse[indexResult];
+						}
+					}
+					else {
+						if ( oldValues[indexResult] == undefined || 
+							( (oldValues[indexResult][element] !== parseInt(strArrayEqual[1])) ||
+							  !onlychanged ) )
+						{
+							resultParse[indexResult] = { [element] : parseInt(strArrayEqual[1]) };
+							oldValues[indexResult] = resultParse[indexResult];
+						}							
 					}
 					indexResult++
 					break;
 				}
 			}
 		}
-		//console.log(oldValues);				
+		//console.log(oldValues);	
+		if(singleoutput) {
+			resultParse = resultParse.filter(function( element ) {
+			   return element !== undefined;
+			});
+			resultParse = { payload : resultParse }
+		}        					
 		return resultParse;
+		
 	}
 	
 	function IoBox(n) {
@@ -111,8 +151,16 @@ module.exports = function(RED) {
 			
             this.port.on('data', function(msgout) {				
                 //parsing operation
-				var result = parseValues(msgout.payload , n.ports, n.onlychanged );
-				node.send(result);
+				var result = parseValues(msgout.payload , n.ports, n.onlychanged, n.singleoutput );
+				if(n.singleoutput) {
+					console.log(result.payload);
+					if(result.payload.length !== 0) {
+						node.send(result);
+					}
+				}
+				else {
+					node.send(result);
+				}
             });
             this.port.on('ready', function() {
                 node.status({fill:"green",shape:"dot",text:"node-red:common.status.connected"});

@@ -67,7 +67,8 @@
 			"output2":"OUT2",
 			"output3":"OUT3",
 			"output4":"OUT4",
-			"onlychanged":"Transfer only changed values"
+			"onlychanged":"Transfer only changed values",
+			"singleoutput":"Single output"
         },
         "placeholder": {
             "serialport": "for example: /dev/ttyUSB0/ or COM1"

@@ -13,6 +13,11 @@
 		<span data-i18n="serial.label.onlychanged"></span>
 	</div>
 	
+	<div class="form-row">
+		<input type="checkbox" id="node-input-singleoutput" style="display:inline-block; width:15px; vertical-align:baseline;">
+		<span data-i18n="serial.label.singleoutput"></span>
+	</div>
+	
 	<div class="form-row" style="margin-top:12px; margin-bottom:0 ">
         <label style="width: 100% !important;"><i class="fa fa-sign-in"></i> <span data-i18n="serial.label.outputs"></span></label>
     </div>
@@ -283,6 +288,7 @@
 			cardoutput4 : {value : false},
 			
 			onlychanged : {value : true},
+			singleoutput: {value : true},
 			
 			outputs: {value:3},
 			ports: {value:["INF1","INF2","CNT1"]}
@@ -323,8 +329,12 @@
 					oPorts.push("OUT"+i);
 				}
 			}
-		
 			$("#node-input-outputs").val(oPorts.length);
+			
+			if ($("#node-input-singleoutput").is(":checked")) {
+				$("#node-input-outputs").val(1);
+			}
+			
 			$("#node-input-ports").val(oPorts);	
 			
         }		
