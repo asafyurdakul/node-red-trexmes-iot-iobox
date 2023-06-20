@@ -6,7 +6,7 @@ The counter total information is produced by counting the changes that occur wit
 The last status of 4 output signals, together with these 12 input, counter and cycle values, can be read instantly with this Node-red node, and the last status of each selected signal value can be taken as a node output.
 
 
-![Iot-IoBox image](https://raw.githubusercontent.com/asafyurdakul/node-red-trexmes-iot-iobox/main/docs/assets/iocard.png)
+![Iot-IoBox image](assets/iocard.png)
 
 # Install
 
