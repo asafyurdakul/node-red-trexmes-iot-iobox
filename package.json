@@ -1,6 +1,6 @@
 {
   "name": "node-red-trexmes-iot-iobox",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Trex Iot-IoBox serial connector",
   "main": "iobox.js",
   "keywords": [
