@@ -54,19 +54,19 @@ module.exports = function(RED) {
 						
 						if(!singleoutput) {						
 							if ( oldValues[indexResult] == undefined || 
-								( (oldValues[indexResult].payload !== strArrayEqual[1][12 - Number(m)]) ||
+								( (oldValues[indexResult].payload !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
 								  !onlychanged ) )
 							{						
-								resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
+								resultParse[indexResult] = { payload : parseInt(strArrayEqual[1][12 - Number(m)]), port : element };
 								oldValues[indexResult] = resultParse[indexResult];
 							}
 						}
 						else {	
 							if ( oldValues[indexResult] == undefined || 
-								( (oldValues[indexResult][element] !== strArrayEqual[1][12 - Number(m)]) ||
+								( (oldValues[indexResult][element] !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
 								  !onlychanged ) )
 							{
-								resultParse[indexResult] = { [element]: strArrayEqual[1][12 - Number(m)] };							
+								resultParse[indexResult] = { [element]: parseInt(strArrayEqual[1][12 - Number(m)]) };							
 								oldValues[indexResult] = resultParse[indexResult];
 							}
 						}
@@ -81,19 +81,19 @@ module.exports = function(RED) {
 						
 						if(!singleoutput) {
 							if ( oldValues[indexResult] == undefined || 
-								( (oldValues[indexResult].payload !== strArrayEqual[1][12 - Number(m)]) ||
+								( (oldValues[indexResult].payload !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
 								  !onlychanged ) )
 							{
-								resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
+								resultParse[indexResult] = { payload : parseInt(strArrayEqual[1][12 - Number(m)]), port : element };
 								oldValues[indexResult] = resultParse[indexResult];
 							}
 						}
 						else {
 							if ( oldValues[indexResult] == undefined || 
-								( (oldValues[indexResult][element] !== strArrayEqual[1][12 - Number(m)]) ||
+								( (oldValues[indexResult][element] !== parseInt(strArrayEqual[1][12 - Number(m)])) ||
 								  !onlychanged ) )
 							{
-								resultParse[indexResult] = { [element]: strArrayEqual[1][12 - Number(m)] };							
+								resultParse[indexResult] = { [element]: parseInt(strArrayEqual[1][12 - Number(m)]) };							
 								oldValues[indexResult] = resultParse[indexResult];
 							}
 						}
@@ -106,19 +106,19 @@ module.exports = function(RED) {
 					
 					if(!singleoutput) {
 						if ( oldValues[indexResult] == undefined || 
-							( (oldValues[indexResult].payload !==  strArrayEqual[1]) ||
+							( (oldValues[indexResult].payload !==  parseInt(strArrayEqual[1])) ||
 							  !onlychanged) )
 						{	
-							resultParse[indexResult] = { payload : strArrayEqual[1] , port : element };
+							resultParse[indexResult] = { payload : parseInt(strArrayEqual[1]) , port : element };
 							oldValues[indexResult] = resultParse[indexResult];
 						}
 					}
 					else {
 						if ( oldValues[indexResult] == undefined || 
-							( (oldValues[indexResult][element] !== strArrayEqual[1]) ||
+							( (oldValues[indexResult][element] !== parseInt(strArrayEqual[1])) ||
 							  !onlychanged ) )
 						{
-							resultParse[indexResult] = { [element] : strArrayEqual[1] };
+							resultParse[indexResult] = { [element] : parseInt(strArrayEqual[1]) };
 							oldValues[indexResult] = resultParse[indexResult];
 						}							
 					}
