@@ -153,7 +153,7 @@ module.exports = function(RED) {
                 //parsing operation
 				var result = parseValues(msgout.payload , n.ports, n.onlychanged, n.singleoutput );
 				if(n.singleoutput) {
-					console.log(result.payload);
+					//console.log(result.payload);
 					if(result.payload.length !== 0) {
 						node.send(result);
 					}
