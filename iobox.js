@@ -34,12 +34,18 @@ module.exports = function(RED) {
 			parsePorts = parsePorts.split(',');
 		}
 		var strArray = msgout.split('&');		
-		var resultParse = new Array(parsePorts.length);
-		if( oldValues.length == 0) {
-			oldValues = new Array(parsePorts.length);
+		if(!singleoutput) {
+			var resultParse = new Array(parsePorts.length);
+			if( oldValues.length == 0) {
+				oldValues = new Array(parsePorts.length);
+			}
+			var indexResult = 0;
 		}
-		var indexResult = 0;
-
+		else {
+			var resultParse = {};
+			var oldValues = {};
+		}
+		
 		for (let index = 0; index < parsePorts.length; index++) {
 			const element = parsePorts[index];
 
@@ -60,8 +66,10 @@ module.exports = function(RED) {
 								resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
 								oldValues[indexResult] = resultParse[indexResult];
 							}
+							indexResult++;
 						}
 						else {	
+							/*
 							if ( oldValues[indexResult] == undefined || 
 								( (oldValues[indexResult][element] !== strArrayEqual[1][12 - Number(m)]) ||
 								  !onlychanged ) )
@@ -69,8 +77,13 @@ module.exports = function(RED) {
 								resultParse[indexResult] = { [element]: strArrayEqual[1][12 - Number(m)] };							
 								oldValues[indexResult] = resultParse[indexResult];
 							}
+							*/
+							if(oldValues["input" + m] !== strArrayEqual[1][12 - Number(m)] || !onlychanged )
+							{
+								resultParse["input" + m] =  strArrayEqual[1][12 - Number(m)];
+								oldValues["input" + m]  = resultParse["input" + m] ;							
+							}
 						}
-						indexResult++;
 								
 						break;
 					}
@@ -87,8 +100,10 @@ module.exports = function(RED) {
 								resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
 								oldValues[indexResult] = resultParse[indexResult];
 							}
+							indexResult++;
 						}
 						else {
+							/*
 							if ( oldValues[indexResult] == undefined || 
 								( (oldValues[indexResult][element] !== strArrayEqual[1][12 - Number(m)]) ||
 								  !onlychanged ) )
@@ -96,8 +111,14 @@ module.exports = function(RED) {
 								resultParse[indexResult] = { [element]: strArrayEqual[1][12 - Number(m)] };							
 								oldValues[indexResult] = resultParse[indexResult];
 							}
+							*/
+							if(oldValues["out" + m] !== strArrayEqual[1][12 - Number(m)] || !onlychanged )
+							{
+								resultParse['out' + m] =  strArrayEqual[1][12 - Number(m)];
+								oldValues['out' + m] = resultParse['out' + m];
+							}
 						}
-						indexResult++;
+						
 								
 						break;
 					}
@@ -112,26 +133,38 @@ module.exports = function(RED) {
 							resultParse[indexResult] = { payload : strArrayEqual[1] , port : element };
 							oldValues[indexResult] = resultParse[indexResult];
 						}
+						indexResult++;
 					}
 					else {
+						/*
 						if ( oldValues[indexResult] == undefined || 
 							( (oldValues[indexResult][element] !== strArrayEqual[1]) ||
 							  !onlychanged ) )
 						{
 							resultParse[indexResult] = { [element] : strArrayEqual[1] };
 							oldValues[indexResult] = resultParse[indexResult];
-						}							
+						}
+						*/
+						var m = element.replace('CNT','counter');
+						m = m.replace('CYC','cycle');
+							
+						if(oldValues[m] !== strArrayEqual[1] || !onlychanged ){
+							resultParse[m] =  strArrayEqual[1];
+							oldValues[m] = resultParse[m];
+						}
 					}
-					indexResult++
+
 					break;
 				}
 			}
 		}
 		//console.log(oldValues);	
 		if(singleoutput) {
+			/*
 			resultParse = resultParse.filter(function( element ) {
 			   return element !== undefined;
 			});
+			*/
 			resultParse = { payload : resultParse }
 		}        					
 		return resultParse;
@@ -142,7 +175,6 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this,n);
         this.serial = n.serial;
         this.serialConfig = RED.nodes.getNode(this.serial);
-		//this.commandArray = [ 'out' ]; // gerekirse diger komutlar eklenecek
 		
         if (this.serialConfig) {
             var node = this;
