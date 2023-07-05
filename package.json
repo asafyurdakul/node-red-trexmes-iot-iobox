@@ -23,7 +23,7 @@
     "url": "https://github.com/asafyurdakul/node-red-trexmes-iot-iobox"
   },
   "author": "asafyurdakul@trex.com.tr",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "serialport": "^11.0.0"
   }
