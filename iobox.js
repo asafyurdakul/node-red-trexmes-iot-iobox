@@ -35,9 +35,13 @@ module.exports = function(RED) {
 		}
 		var strArray = msgout.split('&');		
 		if(!singleoutput) {
-			var resultParse = new Array(parsePorts.length);			
-			oldValues = new Array(parsePorts.length);
-			
+			var resultParse = new Array(parsePorts.length);
+			if(!Array.isArray(oldValues)) {
+				oldValues = new Array(parsePorts.length);
+			}			
+			if( oldValues.length == 0) {
+				oldValues = new Array(parsePorts.length);
+			}
 			var indexResult = 0;
 		}
 		else {
