@@ -30,23 +30,30 @@ module.exports = function(RED) {
 		
 	
 	function parseValues(msgout, parsePorts, onlychanged, singleoutput ) {
+
 		if(!Array.isArray(parsePorts)) {
 			parsePorts = parsePorts.split(',');
 		}
 		var strArray = msgout.split('&');		
+		var resultParse;
+		
 		if(!singleoutput) {
-			var resultParse = new Array(parsePorts.length);
-			if(!Array.isArray(oldValues)) {
-				oldValues = new Array(parsePorts.length);
+			resultParse = new Array(parsePorts.length);
+						
+			if(!Array.isArray(oldValues)) {				
+				oldValues = new Array(parsePorts.length);				
 			}			
 			if( oldValues.length == 0) {
 				oldValues = new Array(parsePorts.length);
 			}
+			
 			var indexResult = 0;
 		}
 		else {
-			var resultParse = {};
-			var oldValues = {};
+			resultParse = {};
+			if(Array.isArray(oldValues)) {	
+				oldValues = {};
+			}
 		}
 		
 		for (let index = 0; index < parsePorts.length; index++) {
@@ -65,22 +72,13 @@ module.exports = function(RED) {
 							if ( oldValues[indexResult] == undefined || 
 								( (oldValues[indexResult].payload !== strArrayEqual[1][12 - Number(m)]) ||
 								  !onlychanged ) )
-							{						
+							{								
 								resultParse[indexResult] = { payload : strArrayEqual[1][12 - Number(m)], port : element };
-								oldValues[indexResult] = resultParse[indexResult];
+								oldValues[indexResult] = resultParse[indexResult];								
 							}
 							indexResult++;
 						}
 						else {	
-							/*
-							if ( oldValues[indexResult] == undefined || 
-								( (oldValues[indexResult][element] !== strArrayEqual[1][12 - Number(m)]) ||
-								  !onlychanged ) )
-							{
-								resultParse[indexResult] = { [element]: strArrayEqual[1][12 - Number(m)] };							
-								oldValues[indexResult] = resultParse[indexResult];
-							}
-							*/
 							if(oldValues["input" + m] !== strArrayEqual[1][12 - Number(m)] || !onlychanged )
 							{
 								resultParse["input" + m] =  strArrayEqual[1][12 - Number(m)];
@@ -106,15 +104,6 @@ module.exports = function(RED) {
 							indexResult++;
 						}
 						else {
-							/*
-							if ( oldValues[indexResult] == undefined || 
-								( (oldValues[indexResult][element] !== strArrayEqual[1][12 - Number(m)]) ||
-								  !onlychanged ) )
-							{
-								resultParse[indexResult] = { [element]: strArrayEqual[1][12 - Number(m)] };							
-								oldValues[indexResult] = resultParse[indexResult];
-							}
-							*/
 							if(oldValues["out" + m] !== strArrayEqual[1][12 - Number(m)] || !onlychanged )
 							{
 								resultParse['out' + m] =  strArrayEqual[1][12 - Number(m)];
@@ -139,15 +128,6 @@ module.exports = function(RED) {
 						indexResult++;
 					}
 					else {
-						/*
-						if ( oldValues[indexResult] == undefined || 
-							( (oldValues[indexResult][element] !== strArrayEqual[1]) ||
-							  !onlychanged ) )
-						{
-							resultParse[indexResult] = { [element] : strArrayEqual[1] };
-							oldValues[indexResult] = resultParse[indexResult];
-						}
-						*/
 						var m = element.replace('CNT','counter');
 						m = m.replace('CYC','cycle');
 							
@@ -161,7 +141,7 @@ module.exports = function(RED) {
 				}
 			}
 		}
-		//console.log(oldValues);	
+
 		if(singleoutput) {
 			/*
 			resultParse = resultParse.filter(function( element ) {
@@ -178,18 +158,18 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this,n);
         this.serial = n.serial;
         this.serialConfig = RED.nodes.getNode(this.serial);
-		
+			
         if (this.serialConfig) {
             var node = this;
             node.status({fill:"grey",shape:"dot",text:"node-red:common.status.not-connected"});
             node.port = serialPool.get(this.serialConfig);
-			
+	
             this.port.on('data', function(msgout) {				
                 //parsing operation
 				var result = parseValues(msgout.payload , n.ports, n.onlychanged, n.singleoutput );
 				if(n.singleoutput) {
 					//console.log(result.payload);
-					if(result.payload.length !== 0) {
+					if(Object.keys(result.payload).length !== 0) {
 						node.send(result);
 					}
 				}
